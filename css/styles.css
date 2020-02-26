@@ -1,0 +1,36 @@
+* {
+    font-family: 'Roboto', 'Times New Roman', Times, serif;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+}
+
+body {
+    background-color: #202124;
+}
+
+h1 {
+    text-align: center;
+    color: #E8EAED;
+}
+
+div#app {
+    text-align: center;
+}
+
+div#app ul {
+    list-style: none;
+}
+
+div#app li {
+    color: #E8EAED;
+}
+
+div#app li a img {
+    width: auto;
+    height: 20px;
+}
