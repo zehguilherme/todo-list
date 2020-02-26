@@ -2,7 +2,7 @@ let listElement = document.querySelector('div#app ul')
 let inputElement = document.querySelector('div#app input')
 let buttonElement = document.querySelector('div#app button')
 
-let toDos = []
+let toDos = JSON.parse(localStorage.getItem('list_todos')) || []  //caso não consiga retornar um valor aceitável para a 1ª operação, atribuirá vetor vazio
 
 // Renderizar toDos
 function renderToDos() {
@@ -34,13 +34,25 @@ function renderToDos() {
 
     // Adicionar toDos
     function addToDo() {
+        inputElement.focus()
+
         let toDoText = inputElement.value  //valor do input
 
-        toDos.push(toDoText)  //adiciona o valor do input ao array
+        // Verifica se o valor do input está vazio
+        if(toDoText == '') {
+            alert('Insira algum item na lista !')
 
-        inputElement.value = ''  //apaga o valor atual que está escrito no input
+            inputElement.focus()
+        } else {
+            toDos.push(toDoText)  //adiciona o valor do input ao array
+    
+            inputElement.value = ''  //apaga o valor atual que está escrito no input
+    
+            renderToDos()  //renderiza todos os todos novamentes com o novo que foi adicionado ao final do array
+    
+            savetoStorage()  //salva dados no storage do navegador
+        }
 
-        renderToDos()  //renderiza todos os todos novamentes com o novo que foi adicionado ao final do array
     }
 
     buttonElement.onclick = addToDo  //executa a adição somente no clique do botão
@@ -48,4 +60,12 @@ function renderToDos() {
     function deleteToDo(position) {
         toDos.splice(position, 1)  //remover próximo item a partir do item atual que usuário clicar (position)
         renderToDos()              //renderizar novamente
+        savetoStorage()            //salva dados no storage do navegador
+
+        inputElement.focus()
     }
+
+    // Salva a lista de valores localmente no armazenamento do navegador
+    function savetoStorage() {
+        localStorage.setItem('list_todos', JSON.stringify(toDos))  //transforma o vetor em uma string JSON
+    }        
