@@ -13,15 +13,18 @@ function renderToDos() {
         let toDoText = document.createTextNode(todo)  //propria variavel pode ser adicionada (contém o texto de cada to do)
 
         let linkElement = document.createElement('a')
+        let imageLink = document.createElement('img')
         
         linkElement.setAttribute('href', '#')  //adiciona href ao link criado
 
         let pos = toDos.indexOf(todo)  //procura dentro do array o indíce do elemento atual que está passando pela função
         linkElement.setAttribute('onclick', `deleteToDo(${pos})`)
 
-        let linkText = document.createTextNode('Excluir')  //texto dentro do elemento
+        imageLink.setAttribute('src', '../img/x-red.png')  //imagem inserida no lugar de onde seria apenas o texto do link
+        imageLink.setAttribute('data-toggle', 'tooltip')  //balão com a palavra "Excluir"
+        imageLink.setAttribute('title', 'Excluir elemento')
 
-        linkElement.appendChild(linkText)
+        linkElement.appendChild(imageLink)
 
         toDoElement.appendChild(toDoText)
         toDoElement.appendChild(linkElement)
@@ -57,6 +60,7 @@ function renderToDos() {
 
     buttonElement.onclick = addToDo  //executa a adição somente no clique do botão
 
+    // Deleta elementos
     function deleteToDo(position) {
         toDos.splice(position, 1)  //remover próximo item a partir do item atual que usuário clicar (position)
         renderToDos()              //renderizar novamente
