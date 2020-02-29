@@ -16,10 +16,55 @@ body {
 h1 {
     text-align: center;
     color: #E8EAED;
+    font-size: 40px;
 }
 
 div#app {
     text-align: center;
+}
+
+div#app input {
+    height: 38px;
+    width: auto;
+    border-radius: 25px;
+    border-style: none;
+    text-align: center;
+}
+
+div#app input::placeholder {
+    text-align: center;
+}
+
+div#app button {
+    height: 40px;
+    width: auto;
+    border-radius: 25px;
+    border-style: none;
+    margin-left: 10px;
+    background-color: #202124;
+    border-style: solid;
+    color: white;
+    font-size: 25px;
+}
+
+div#app button:hover {
+    cursor: pointer;
+    opacity: .87;
+    background-color: rgba(154,160,166,0.157);
+
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: transparent;
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: transparent;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: transparent;
+    border-left-style: solid;
+    border-left-width: 1px;
 }
 
 div#app ul {
@@ -28,9 +73,17 @@ div#app ul {
 
 div#app li {
     color: #E8EAED;
+    font-size: 30px;
 }
 
-div#app li a img {
-    width: auto;
-    height: 20px;
+div#app a {
+    margin-left: 5px;
+    color: white;
+}
+
+div#app a i:hover {
+    /* color: black; */
+    border-radius: 50%;
+    border-style: solid;
+    border-color: white;
 }
