@@ -13,18 +13,22 @@ function renderToDos() {
         let toDoText = document.createTextNode(todo)  //propria variavel pode ser adicionada (contém o texto de cada to do)
 
         let linkElement = document.createElement('a')
-        let imageLink = document.createElement('img')
+        let iconLink = document.createElement('i')
         
         linkElement.setAttribute('href', '#')  //adiciona href ao link criado
 
         let pos = toDos.indexOf(todo)  //procura dentro do array o indíce do elemento atual que está passando pela função
         linkElement.setAttribute('onclick', `deleteToDo(${pos})`)
 
-        imageLink.setAttribute('src', '../img/x-red.png')  //imagem inserida no lugar de onde seria apenas o texto do link
-        imageLink.setAttribute('data-toggle', 'tooltip')  //balão com a palavra "Excluir"
-        imageLink.setAttribute('title', 'Excluir elemento')
+        iconLink.setAttribute('class', 'material-icons')  //classe de icones
 
-        linkElement.appendChild(imageLink)
+        let iconName = document.createTextNode('cancel')  //nome do icone
+        iconLink.appendChild(iconName)
+        
+        iconLink.setAttribute('data-toggle', 'tooltip')  //balão com a palavra "Excluir"
+        iconLink.setAttribute('title', 'Excluir')
+
+        linkElement.appendChild(iconLink)
 
         toDoElement.appendChild(toDoText)
         toDoElement.appendChild(linkElement)
@@ -46,6 +50,10 @@ function renderToDos() {
             alert('Insira algum item na lista !')
 
             inputElement.focus()
+        } else if (toDos.includes(toDoText)){  //valor inserido já estiver na lista de to do
+            alert('Valor já inserido')
+
+            inputElement.value = ''
         } else {
             toDos.push(toDoText)  //adiciona o valor do input ao array
     
